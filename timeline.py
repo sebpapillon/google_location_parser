@@ -1,22 +1,20 @@
 import datetime
 import json
 from dateutil import parser
+import sys
 
-with open('2014_AUGUST.json') as f:
+with open(sys.argv[1    ]) as f:
     locations = json.load(f)
     for location in locations["timelineObjects"] :
         if "placeVisit" in location:
             try:
-                print(location["placeVisit"]["duration"]["startTimestamp"]
+                print(str(parser.parse(location["placeVisit"]["duration"]["startTimestamp"]).strftime('%d/%m/%Y-%H:%M'))
                 +" "
                 +location["placeVisit"]["location"]["address"])
-                print("date is")
-                print(parser.parse(location["placeVisit"]["duration"]["startTimestamp"]))
-            except:
-                print("address is unknown")
                 
-print(datetime.datetime.utcnow().isoformat())
-print(datetime.datetime(2024,8,20))
+            except Exception as e:
+                print(e)
+                
 
 
 
