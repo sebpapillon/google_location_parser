@@ -3,7 +3,7 @@ import json
 from dateutil import parser
 import sys
 
-with open(sys.argv[1    ]) as f:
+with open(sys.argv[1]) as f:
     locations = json.load(f)
     for location in locations["timelineObjects"] :
         if "placeVisit" in location:
