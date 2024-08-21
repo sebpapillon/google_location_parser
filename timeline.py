@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import datetime
 import json
 from dateutil import parser
@@ -9,6 +10,8 @@ with open(sys.argv[1]) as f:
         if "placeVisit" in location:
             try:
                 print(str(parser.parse(location["placeVisit"]["duration"]["startTimestamp"]).strftime('%d/%m/%Y-%H:%M'))
+                +" " 
+                +str(parser.parse(location["placeVisit"]["duration"]["endTimestamp"]).strftime('%d/%m/%Y-%H:%M'))
                 +" "
                 +location["placeVisit"]["location"]["address"])
                 
