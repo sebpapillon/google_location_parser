@@ -3,7 +3,6 @@ import datetime
 import json
 from dateutil import parser
 import sys
-from lat_lon_parser import parse
 
 with open(sys.argv[1]) as f:
     index=0
@@ -29,8 +28,8 @@ with open(sys.argv[1]) as f:
                 +" - " 
                 +str(parser.parse(location["activitySegment"]["duration"]["endTimestamp"]).strftime('%d/%m/%Y-%H:%M')))
                 for point in location["activitySegment"]["waypointPath"]["waypoints"]:
-                    print("{:.6f}".format(point["latE7"]*0.0000001)+" "+"{:.6f}".format(point["lngE7"]*0.0000001))
-                    print(parse("{:.6f}".format(point["latE7"]*0.0000001)))
+                    print("{:.6f}".format(point["latE7"]*0.0000001) , "{:.6f}".format(point["lngE7"]*0.0000001))
+                    
             except Exception as e:
                 print("exception with "+str(e)+" at index "+str(index))
             print()
